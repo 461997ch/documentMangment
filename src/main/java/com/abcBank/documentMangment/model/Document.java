@@ -1,5 +1,7 @@
 package com.abcBank.documentMangment.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -37,9 +39,10 @@ public class Document implements Serializable {
     @Column(name = "documentType")
     private String documentType;
 
+    @JsonBackReference
     @ManyToOne()
-    @JoinColumn(name="user_Id", nullable=false)
     private UserDetails userDetails;
+
 
     @Column(name = "deleted")
     private boolean deleted = Boolean.FALSE;
